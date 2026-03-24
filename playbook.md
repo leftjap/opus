@@ -202,6 +202,7 @@ AI는 작업지시서 출력 전에 이 목록을 스캔한다.
 
 ## 7. 변경 이력
 
+- 3/24: 이름표 app.js showApp()의 loadAll 경로에서 SYNC.isDbLoaded 미설정 버그 수정. localOnly expenses 재전송이 isDbLoaded 가드에 막혀 서버에 도달 못하던 근본 원인.
 - 3/24: 이름표 가계부 캘린더 날짜 꾹누르기 삭제 기능 추가. 운동앱 터치 핸들러 패턴 적용 (touchstart 600ms, 짧은탭/롱프레스 분기, user-select:none).
 - 3/24: **gym 이름 변경 완료** (Gorilla→gym). GitHub leftjap/gorilla→leftjap/gym. 로컬 C:\dev\workout\→C:\dev\apps\gym\. Google Drive Gorilla→apps/gym/. manifest.json, index.html, AGENTS.md 경로 갱신. gas/Code.js 갱신 (주석, AUTH_TOKEN, rootFolder, message). clasp pull + push + 수동 배포 완료. 스모크 테스트 3/3 통과. playbook.md 프로젝트 맵 갱신.
 - 3/24: **study 앱 clasp 설정 완료**. .clasp.json 생성 + appsscript.json pull + Code.js rootFolder 'study' 갱신 + clasp push + 수동 배포 완료. L-04 교훈 적용 (수동 재배포 필수).
