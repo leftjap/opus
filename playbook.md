@@ -147,6 +147,8 @@ AI는 작업지시서 출력 전에 이 목록을 스캔한다.
 
 ### 교훈 목록
 
+> 교훈 등록 시 시행착오 횟수와 소모 커밋 수를 괄호로 병기한다. 예: (시행착오 3회, fix 커밋 4건)
+
 | ID | 패턴 | 방지책 | 적용 대상 |
 |---|---|---|---|
 | L-01 | Haiku가 수정 위치 못 찾음 | MUST: 함수/선택자 전체를 교체 코드로 제공 | 전체 |
@@ -159,8 +161,8 @@ AI는 작업지시서 출력 전에 이 목록을 스캔한다.
 | L-08 | sed/tr로 파일 소실 | MUST NOT: Unix 텍스트 도구 사용 금지. PowerShell 또는 VS Code만 | 전체 |
 | L-09 | CLAUDE.md/AGENTS.md 비대화로 AI 준수율 하락 | MUST: 루트 문서는 라우터 역할. 상시 로드 100줄 이하 목표. 작업별 상세는 별도 파일로 progressive disclosure. Instruction budget ~150개 (시스템 프롬프트 ~50개 차감 후 사용자 몫 ~100개) | 전체 |
 | L-10 | GAS Code.js 수정했으나 Apps Script에 수동 복사 필요 | MUST: 모든 GAS 프로젝트에 clasp 설정 완료. 작업지시서에 clasp push Step 포함. Apps Script 에디터에서 수동 복사 금지 | GAS 수정 전체 |
-| L-11 | iOS PWA CSS 캐시 | iOS PWA(홈 화면 추가)는 Safari와 별도 캐시 공간을 사용하며 CSS를 공격적으로 캐싱함. 모든 프로젝트의 index.html에 캐시 제어 meta 태그 필수 포함. CSS/JS 수정 시 반드시 버전 파라미터(?v=) 갱신할 것. | 전체 |
-| L-12 | iOS PWA에서 하단 고정 버튼 위치 어긋남 | Safari 탭에서는 env(safe-area-inset-bottom)이 하단 툴바 높이를 포함하여 큰 값을 반환하지만, PWA standalone에서는 홈 인디케이터만 있어 같은 값이 과도함. CSS env()만으로는 Safari 탭과 PWA를 동시에 맞출 수 없음. MUST: ①app.js에서 `window.navigator.standalone === true` 감지 → `<html>`에 `.ios-pwa` 클래스 추가. ②CSS에서 `.ios-pwa .fixed-bottom-element { bottom: 고정값 }` 으로 env() 오버라이드. ③Chrome 모바일뷰에는 영향 없음 확인. env() 디버깅에 시간 낭비하지 말 것 — iOS PWA는 JS 감지 + 고정값이 정답. | 전체 웹앱 (gym, study, keep) |
+| L-11 | iOS PWA CSS 캐시 (시행착오 2회) | iOS PWA(홈 화면 추가)는 Safari와 별도 캐시 공간을 사용하며 CSS를 공격적으로 캐싱함. 모든 프로젝트의 index.html에 캐시 제어 meta 태그 필수 포함. CSS/JS 수정 시 반드시 버전 파라미터(?v=) 갱신할 것. | 전체 |
+| L-12 | iOS PWA에서 하단 고정 버튼 위치 어긋남 (시행착오 5회, fix 커밋 5건) | Safari 탭에서는 env(safe-area-inset-bottom)이 하단 툴바 높이를 포함하여 큰 값을 반환하지만, PWA standalone에서는 홈 인디케이터만 있어 같은 값이 과도함. CSS env()만으로는 Safari 탭과 PWA를 동시에 맞출 수 없음. MUST: ①app.js에서 `window.navigator.standalone === true` 감지 → `<html>`에 `.ios-pwa` 클래스 추가. ②CSS에서 `.ios-pwa .fixed-bottom-element { bottom: 고정값 }` 으로 env() 오버라이드. ③Chrome 모바일뷰에는 영향 없음 확인. env() 디버깅에 시간 낭비하지 말 것 — iOS PWA는 JS 감지 + 고정값이 정답. | 전체 웹앱 (gym, study, keep) |
 
 ---
 
