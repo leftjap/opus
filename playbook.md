@@ -225,6 +225,7 @@ AI는 작업지시서 출력 전에 이 목록을 스캔한다.
 
 ## 8. 변경 이력
 
+- 3/25: 이름표 AGENTS.md 경로 치환 (playbook-config→playbook) 3건.
 - 3/25: **B-20 keep 리네이밍 셋업 완료**. playbook-config→playbook, notes→list. playbook.md, 심링크, GitHub remote 갱신. list/README.md→INDEX.md 통합. 세션노트 1건 저장. 작업지시서 원칙 섹션 추가.
 - 3/24: notes/ 폴더 신설 + 운영 규칙(README.md). 세션 노트 3건 저장(keep 이름 결정, 습관 트래킹 vs 전용 앱, Claude Code 데스크톱 검토). 프로젝트 맵에 keep 추가(글쓰기 교체). B-20(keep 리네이밍), I-04(데스크톱 앱 토큰 비교) 등록.
 - 3/24: 글쓰기 대시보드 앱 이름 `keep`으로 확정 (글쓰기+가계부+루틴). 프로젝트 맵에서 글쓰기→keep 교체. 리네이밍 셋업 B-20 등록.
