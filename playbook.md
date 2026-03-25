@@ -398,6 +398,7 @@ $file = '[파일 절대 경로]'
 
 ## 8. 변경 이력
 
+- 3/25: **study AGENTS.md 경량화 완료** (1,130줄→530줄). 함수맵/호출체인/전역변수/스키마(reviewQueue 핵심만 유지)/Phase진행/콘솔레퍼런스 삭제. 경로 수정(C:\dev\study→C:\dev\apps\study, playbook-config→playbook). 레포명 갱신(gorilla→gym, nametag-game→keep). I-01 방향 적용.
 - 3/25: **gym AGENTS.md 경량화 완료** (1,200줄→470줄). 함수맵/호출체인/스키마/전역변수/진행상황/이력 삭제. 규칙+교훈+디자인가이드만 유지. I-01 방향 적용.
 - 3/25: **nametag-game → keep 이름 변경 완료**. GitHub leftjap/nametag-game→leftjap/keep. 로컬 C:\dev\nametag\→C:\dev\apps\keep\. Google Drive 코드 폴더 없음 (스킵). index.html title/apple-mobile-web-app-title 갱신. AGENTS.md 경로 치환. gas/Code.js 확인 (수정 없음). clasp push 완료 (변경사항 없음, 수동 재배포 대기). playbook.md 프로젝트 맵 갱신 (이명표→keep 통합, 상태→운영 중).
 - 3/25: 이름표 AGENTS.md 경로 치환 (playbook-config→playbook) 3건.
