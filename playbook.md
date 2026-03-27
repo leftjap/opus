@@ -179,6 +179,7 @@ AI는 작업지시서 출력 전에 이 목록을 스캔한다.
 | L-11 | iOS PWA CSS 캐시 (시행착오 2회) | iOS PWA(홈 화면 추가)는 Safari와 별도 캐시 공간을 사용하며 CSS를 공격적으로 캐싱함. 모든 프로젝트의 index.html에 캐시 제어 meta 태그 필수 포함. CSS/JS 수정 시 반드시 버전 파라미터(?v=) 갱신할 것. | 전체 |
 | L-12 | iOS PWA에서 하단 고정 버튼 위치 어긋남 (시행착오 5회, fix 커밋 5건) | Safari 탭에서는 env(safe-area-inset-bottom)이 하단 툴바 높이를 포함하여 큰 값을 반환하지만, PWA standalone에서는 홈 인디케이터만 있어 같은 값이 과도함. CSS env()만으로는 Safari 탭과 PWA를 동시에 맞울 수 없음. MUST: ①app.js에서 `window.navigator.standalone === true` 감지 → `<html>`에 `.ios-pwa` 클래스 추가. ②CSS에서 `.ios-pwa .fixed-bottom-element { bottom: 고정값 }` 으로 env() 오버라이드. ③Chrome 모바일뷰에는 영향 없음 확인. env() 디버깅에 시간 낭비하지 말 것 — iOS PWA는 JS 감지 + 고정값이 정답. | 전체 웹앱 (gym, study, keep) |
 | L-13 | 에이전트 반복 실패 시 같은 세션에서 계속하면 컨텍스트 오염으로 같은 접근만 반복한다 | MUST: 동일 증상 fix/style 커밋 2회 연속 실패 시, 3회차 시도 전에 사용자에게 경고: "⚠️ 에이전트가 같은 실수를 반복하면 컨텍스트 오염 확률이 높아집니다. 다른 세션에서 시도해 보세요." 사용자 명시 확인 후에만 3회차 진행. (시행착오 5회, fix 커밋 5건 — gym CSS 오버라이드 건) | 전체 에이전트 |
+| L-14 | decisions/ 폴더 용도 범위 좁혀짐 | MUST: decisions/ 폴더는 "큰 결정의 근거"만 보관. 사소한 건 playbook.md 교훈 테이블에 한 줄로 처리. ADR 관례에 따라 list→decisions로 변경. | 전체 |
 
 ---
 
