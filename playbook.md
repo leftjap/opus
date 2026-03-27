@@ -127,6 +127,7 @@
 | B-32 | 오늘의내비+keep | 소연 AI 댓글 품질 개선: 피드백 지침서 보강 + 실제 댓글 테스트. 소연에게 도움이 되는 정보 제공을 기본 방향으로 확립 | P1 | B-31 후. B-15 흡수 |
 | B-33 | docs | docs 레포 하위 프로젝트 및 폴더 정리: 기타/ 해체(BRAND-MAPPING.md → keep, 운동종목_이미지_URL.txt → gym). playbook 프로젝트 맵에 글쓰기 추가. docs 레포 루트 CLAUDE.md 라우팅 검토 | P2 | 단순 이동 + 맵 갱신 |
 | ✅ B-34 | keep | 가계부 날짜 수정 date picker 버그 수정 — iOS Safari/PWA에서 hidden input의 showPicker() 미작동 → _triggerExpenseDatePicker()에서 picker 호출 전 요소를 임시 가시화 | 완료 | iOS 대응 완료. 기존 수기 입력 시 date picker 정상 작동 |
+| ✅ B-35 | keep | 파트너 모드 LocalStorage 오염 방지 | 완료 | enterPartnerMode()에서 LocalStorage에 파트너 expenses/brandIcons/brandOverrides/merchantAliases를 쓰지 않도록 변경. data.js의 getExpenses()/getBrandIcons()/getBrandOverrides()/getMerchantAliases()에 파트너 모드 분기 추가. 파트너 모드 중 SYNC.isDbLoaded=false로 동기화 완전 차단. 퇴장 시 동기화 복원. |
 
 ### ⚪ 아이디어
 
