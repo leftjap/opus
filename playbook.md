@@ -129,6 +129,7 @@
 | ✅ B-34 | keep | 가계부 날짜 수정 date picker 버그 수정 — iOS Safari/PWA에서 hidden input의 showPicker() 미작동 → _triggerExpenseDatePicker()에서 picker 호출 전 요소를 임시 가시화 | 완료 | iOS 대응 완료. 기존 수기 입력 시 date picker 정상 작동 |
 | ✅ B-35 | keep | 파트너 모드 LocalStorage 오염 방지 | 완료 | enterPartnerMode()에서 LocalStorage에 파트너 expenses/brandIcons/brandOverrides/merchantAliases를 쓰지 않도록 변경. data.js의 getExpenses()/getBrandIcons()/getBrandOverrides()/getMerchantAliases()에 파트너 모드 분기 추가. 파트너 모드 중 SYNC.isDbLoaded=false로 동기화 완전 차단. 퇴장 시 동기화 복원. |
 | ✅ B-36 | keep | GAS 다세대 백업 + 무결성 검증 | 완료 | _backupDatabaseIfNeeded를 1일1회 7일분 보관으로 변경 (app_database_backup_YYYY-MM-DD.json, 구 app_database_backup.json 자동 삭제). saveDatabase에 expenses 급변(±50%) 감지 시 저장 차단. listBackups/restoreFromBackup 수동 복원 유틸 추가. |
+| ✅ B-37 | keep | saveDatabase 카드 교차 오염 검증 | 완료 | OWNER_CARDS 매핑으로 타 사용자 카드(leftjap↔soyoun312)가 expenses에 포함되면 저장 차단. expenses 급변(±50%) 검증과 이중 보호. |
 
 ### ⚪ 아이디어
 
