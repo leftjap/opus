@@ -117,7 +117,7 @@
 | B-20 | keep | keep 앱 관리자 모드 추가 (현재 소연과 같은 URL 공유 — 시크릿창으로만 계정 전환 가능) | P2 | 인수인계서 4번 미결 사항 |
 | B-21 | 운동 | 트레드밀 유산소 카드 UX: ①1회 완료 후 버튼 "추가 시작"→"다시 시작" ②직접 입력(분) 비활성화 해제 | P1 | 유산소 UX 개선 |
 | B-22 | keep | 파트너 글에 달린 댓글이 표시되지 않는 버그 | 완료 | ui.js 댓글 함수 3곳에서 localStorage 키에 _LS_PREFIX 누락 |
-| B-23 | keep | 해외 결제 내역 알림이 가계부에 반영되지 않음 | 완료 | 날짜 정규식 월(1-12)/일(1-31) 범위 검증 추가 (parseSMS + parseSMSServer). cleanMerchantName Code.js ↔ data.js 변형 통합 패턴 동기화. mergeServerAll 경쟁 조건 수정 (_merging 가드). saveDatabase _merging 가드 추가. CLAUDE.AISUBSCRIPTION → Anthropic 브랜드 매핑 추가. saveExpenseFromSMS 디버깅 로그 강화 (줄바꿈 포함 여부 기록). 잔여: GAS 로그로 실제 SMS 원문 확인 (다음 해외 결제 시 자동 기록됨). |
+| B-23 | keep | 해외 결제 내역 알림이 가계부에 반영되지 않음 | 완료 | 날짜 정규식 월(1-12)/일(1-31) 범위 검증 추가 (parseSMS + parseSMSServer). cleanMerchantName Code.js ↔ data.js 변형 통합 패턴 동기화. mergeServerAll 경쟁 조건 수정 (_merging 가드). saveDatabase _merging 가드 추가. CLAUDE.AISUBSCRIPTION → Anthropic 브랜드 매핑 추가. saveExpenseFromSMS 디버깅 로그 강화 (줄바꿈 포함 여부 기록). cleanMerchantName: 통화코드 단독 접두어(`USD MERCHANT`) 제거 패턴 추가. 서버 버그 데이터(id: 1774510715064) 정리 완료. 잔여: 다음 해외 결제 SMS 수신 시 GAS 실행 로그로 실제 원문 확인. |
 | B-24 | keep | 휴대폰 요금 등 '승인' 외 형식 알림이 가계부에 반영되지 않음 | P1 | B-23과 파싱 로직 연계 |
 | B-25 | keep | 파트너 모드 진입 시 로딩 시간 단축 검토 | P2 | 성능 개선 |
 | B-26 | keep | 클로드 댓글 수동 → API 자동화 방안 검토 | P3 | 현재 수동 운영 중 |
