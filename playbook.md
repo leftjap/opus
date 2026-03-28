@@ -61,6 +61,7 @@
 - 소스 파일 크롤링 전에 AGENTS.md의 크롤링 제외 목록을 확인한다. 제외 파일은 크롤링하지 않고 업로드를 요청한다.
 - 작업지시서 생성 시 common-rules.md의 형식을 따른다. 매 세션 크롤링 불필요 — 형식을 모르면 그때 크롤링한다.
 - playbook.md의 교훈(4번)과 검증 규칙(5번)은 모든 작업지시서에 자동 적용된다.
+- troubleshooting-log.md 참조 조건: ①교훈에서 명시 ②같은 B-xx 2회+ 시도 ③사용자 재발 키워드("또/다시/재발/안 됐어"). 해당 시 크롤링하여 이전 시도를 확인한다.
 
 ### 세션 종료 — playbook.md 갱신
 
@@ -173,7 +174,7 @@ AI는 작업지시서 출력 전에 이 목록을 스캔한다. 해당 교훈이
 | L-10 | GAS Code.js 수동 복사 실패 | clasp push Step 필수. Apps Script 에디터 수동 복사 금지 | GAS 전체 |
 | L-11 | iOS PWA CSS 캐시 | index.html 캐시 제어 meta + CSS/JS ?v= 갱신 | 전체 |
 | L-12 | iOS PWA 하단 고정 버튼 위치 어긋남 (5회 시행착오) | JS로 standalone 감지 → .ios-pwa 클래스 → CSS 고정값. env() 디버깅 금지 | 전체 웹앱 |
-| L-13 | 에이전트 반복 실패 시 컨텍스트 오염 | 2회 연속 실패 시 경고, 3회 시 중단 | 전체 |
+| L-13 | 같은 버그 수정 2회+ 실패 (Opus 설계 실패) | troubleshooting-log.md에 시도 이력 기록 + 크롤링 후 이전 가설 재검토. 백로그 메모에 "N회 시도 미해결" 기재 | 전체 |
 | L-14 | decisions/ 폴더 용도 범위 | 큰 결정 근거만 보관. 사소한 건 교훈 1줄 | 전체 |
 | L-15 | 동일 파일명 프로젝트 간 혼동 (서재 GAS 소실) | 모든 소스 첫 줄 PROJECT: 헤더 필수. 업로드 시 대조. 불일치 시 중단 | 전체 |
 | L-16 | Haiku가 작업지시서 실행 전 허가를 구함 | 작업지시서 상단에 ⚡ 즉시 실행 지시, 하단 ⛔에 "묻지 마세요" 추가 | 전체 |
@@ -209,5 +210,5 @@ AI는 작업지시서 출력 전에 이 목록을 스캔한다. 해당 교훈이
 
 ## 변경 이력
 
-- 3/28: I-01 문서 경량화 완료. B-39 gym 다세대 백업. B-43 완료. B-45 CLAUDE.md 생성. 서재/크립토 AGENTS.md 경량화. keep/gym/study CLAUDE.md 중복 제거. docs CLAUDE.md 생성. B-31 오늘의내비 피드백 지침서 분리 완료. 응대 톤 규칙 추가, B-13/B-14 완료(세션 소실/복원), 문서 역할 맵 추가, Progressive Disclosure 개정, 크롤링 제외 규칙 추가, keep/gym AGENTS.md 체크리스트 통합, B-46 완료
+- 3/28: I-01 문서 경량화 완료. B-39 gym 다세대 백업. B-43 완료. B-45 CLAUDE.md 생성. 서재/크립토 AGENTS.md 경량화. keep/gym/study CLAUDE.md 중복 제거. docs CLAUDE.md 생성. B-31 오늘의내비 피드백 지침서 분리 완료. 응대 톤 규칙 추가, B-13/B-14 완료(세션 소실/복원), 문서 역할 맵 추가, Progressive Disclosure 개정, 크롤링 제외 규칙 추가, troubleshooting-log.md 신설, L-13 교체, keep/gym AGENTS.md 체크리스트 통합, B-46 완료
 - 3/27: keep B-35~B-37 완료 (파트너 오염 방지, 다세대 백업, 교차 오염 검증). B-38~B-42 추가. gym/study/docs 커밋 다수
