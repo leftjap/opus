@@ -141,6 +141,7 @@
 |---|---|---|
 | I-03 | 어학 Phase 2 이후 전체 | 별도 세션 분해 |
 | I-04 | Claude Code 토큰 소비 비교 테스트 | keep 셋업 후 |
+| I-05 | 개인 취향 기반 콘텐츠 추천 앱 (영화/책/음악) | 왓챠피디아 평점 export → LLM content-based 추천. TMDB/KMDb/Last.fm API 활용. MVP: NotebookLM/Claude로 취향 프로필 테스트 → PWA 확장 검토 |
 
 ---
 
@@ -211,5 +212,5 @@ AI는 작업지시서 출력 전에 이 목록을 스캔한다. 해당 교훈이
 
 ## 변경 이력
 
-- 3/28: I-01 문서 경량화 완료. B-39 gym 다세대 백업. B-43 완료. B-45 CLAUDE.md 생성. 서재/크립토 AGENTS.md 경량화. keep/gym/study CLAUDE.md 중복 제거. docs CLAUDE.md 생성. B-31 오늘의내비 피드백 지침서 분리 완료. 응대 톤 규칙 추가, B-13/B-14 완료(세션 소실/복원), 문서 역할 맵 추가, Progressive Disclosure 개정, 크롤링 제외 규칙 추가, troubleshooting-log.md 신설, L-13 교체, keep/gym AGENTS.md 체크리스트 통합, B-46 완료
+- 3/28: I-01 문서 경량화 완료. B-39 gym 다세대 백업. B-43 완료. B-45 CLAUDE.md 생성. 서재/크립토 AGENTS.md 경량화. keep/gym/study CLAUDE.md 중복 제거. docs CLAUDE.md 생성. B-31 오늘의내비 피드백 지침서 분리 완료. 응대 톤 규칙 추가, B-13/B-14 완료(세션 소실/복원), 문서 역할 맵 추가, Progressive Disclosure 개정, 크롤링 제외 규칙 추가, troubleshooting-log.md 신설, L-13 교체, keep/gym AGENTS.md 체크리스트 통합, B-46 완료, I-05 추천앱 아이디어 등록
 - 3/27: keep B-35~B-37 완료 (파트너 오염 방지, 다세대 백업, 교차 오염 검증). B-38~B-42 추가. gym/study/docs 커밋 다수
