@@ -170,6 +170,7 @@ AI는 작업지시서 출력 전에 이 목록을 스캔한다. 해당 교훈이
 | L-16 | Haiku가 작업지시서 실행 전 허가를 구함 | 작업지시서 상단에 ⚡ 즉시 실행 지시, 하단 ⛔에 "묻지 마세요" 추가 | 전체 |
 | L-17 | Opus가 사용자 제안에 무조건 동의 후 사후 합리화 | D-01~D-06 적용. "좋은 아이디어입니다"로 시작 금지 | 전체 |
 | L-18 | 백로그 상세는 등록 시점에 즉시 기록한다. "나중에 채운다"는 규칙은 지켜지지 않으며, 세션이 바뀌면 맥락이 유실된다. (근거: Genspark 대화 2026-03-28, OpenClaw 사례 "Write it down or lose it") | 전체 |
+| L-19 | AI 생성 코드가 로직 오류(1.75×)·회귀(75% 에이전트)를 빈번히 발생시킴 | common-rules.md 6-1 POLT 적용 — Opus가 코드 출력 전 ⓪Scope Lock→①Dry Run→②Self-Critique→③Wiring Check→④Preservation Check→⑤Faithfulness Check 수행. 근거: decisions/2026-03-28-polt-adoption.md | 전체 |
 
 ---
 
