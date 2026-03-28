@@ -231,5 +231,5 @@ AI는 작업지시서 출력 전에 이 목록을 스캔한다. 해당 교훈이
 
 ## 변경 이력
 
-- 3/28: I-01 문서 경량화 완료. B-39 gym 다세대 백업. B-40 study 다세대 백업 완료. B-38 persist() 전 프로젝트 적용. B-41 빈 LS 자동 복원 보호 (keep/gym/study). keep/gym 무결성 검증 확대 (docs/books/quotes 급감 차단, sessions 급감 차단). B-43 완료. B-45 CLAUDE.md 생성. 서재/크립토 AGENTS.md 경량화. keep/gym/study CLAUDE.md 중복 제거. docs CLAUDE.md 생성. B-31 오늘의내비 피드백 지침서 분리 완료. 응대 톤 규칙 추가, B-13/B-14 완료(세션 소실/복원), 문서 역할 맵 추가, Progressive Disclosure 개정, 크롤링 제외 규칙 추가, troubleshooting-log.md 신설, L-13 교체, keep/gym AGENTS.md 체크리스트 통합, B-46 완료, I-05 추천앱 아이디어 등록, 설계 편향 방지 D-xx 신설(4-1), L-14 트리거 보강, L-17 추가, 교훈 추가 조건 명시, decisions/ 기록
+- 3/28: I-01 문서 경량화 완료. B-39 gym 다세대 백업. B-40 study 다세대 백업 완료. B-38 persist() 전 프로젝트 적용. B-41 빈 LS 자동 복원 보호 (keep/gym/study). keep/gym 무결성 검증 확대 (docs/books/quotes/sessions 급감 차단, 빈 데이터 전체 차단) — 재배포 및 GAS 테스트 완료. B-43 완료. B-45 CLAUDE.md 생성. 서재/크립토 AGENTS.md 경량화. keep/gym/study CLAUDE.md 중복 제거. docs CLAUDE.md 생성. B-31 오늘의내비 피드백 지침서 분리 완료. 응대 톤 규칙 추가, B-13/B-14 완료(세션 소실/복원), 문서 역할 맵 추가, Progressive Disclosure 개정, 크롤링 제외 규칙 추가, troubleshooting-log.md 신설, L-13 교체, keep/gym AGENTS.md 체크리스트 통합, B-46 완료, I-05 추천앱 아이디어 등록, 설계 편향 방지 D-xx 신설(4-1), L-14 트리거 보강, L-17 추가, 교훈 추가 조건 명시, decisions/ 기록
 - 3/27: keep B-35~B-37 완료 (파트너 오염 방지, 다세대 백업, 교차 오염 검증). B-38~B-42 추가. gym/study/docs 커밋 다수
