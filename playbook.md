@@ -130,7 +130,6 @@
 | B-47 | 개인 | 세탁기 알아보기 | P0 | 3/29(일)까지 |
 | B-32 | 오늘의내비+keep | 소연 AI 댓글 품질 개선 | P1 | B-31 후 |
 | B-33 | docs | docs 레포 하위 프로젝트 정리 | P2 | 단순 이동 + 맵 갱신 |
-| B-38 | 전체 | navigator.storage.persist() 추가 | P1 | 30분 |
 | B-41 | 운동+어학 | 앱 시작 시 빈 LocalStorage 자동 복원 | P2 | B-13/B-14 연계 |
 | B-42 | keep | 알림 패널 시간 표기 오류 | P1 | 파트너 게시물 createdAt 참조 추정 |
 
@@ -211,5 +210,5 @@ AI는 작업지시서 출력 전에 이 목록을 스캔한다. 해당 교훈이
 
 ## 변경 이력
 
-- 3/28: I-01 문서 경량화 완료. B-39 gym 다세대 백업. B-40 study 다세대 백업 완료. B-43 완료. B-45 CLAUDE.md 생성. 서재/크립토 AGENTS.md 경량화. keep/gym/study CLAUDE.md 중복 제거. docs CLAUDE.md 생성. B-31 오늘의내비 피드백 지침서 분리 완료. 응대 톤 규칙 추가, B-13/B-14 완료(세션 소실/복원), 문서 역할 맵 추가, Progressive Disclosure 개정, 크롤링 제외 규칙 추가, troubleshooting-log.md 신설, L-13 교체, keep/gym AGENTS.md 체크리스트 통합, B-46 완료, I-05 추천앱 아이디어 등록
+- 3/28: I-01 문서 경량화 완료. B-39 gym 다세대 백업. B-40 study 다세대 백업 완료. B-38 persist() 전 프로젝트 적용. B-43 완료. B-45 CLAUDE.md 생성. 서재/크립토 AGENTS.md 경량화. keep/gym/study CLAUDE.md 중복 제거. docs CLAUDE.md 생성. B-31 오늘의내비 피드백 지침서 분리 완료. 응대 톤 규칙 추가, B-13/B-14 완료(세션 소실/복원), 문서 역할 맵 추가, Progressive Disclosure 개정, 크롤링 제외 규칙 추가, troubleshooting-log.md 신설, L-13 교체, keep/gym AGENTS.md 체크리스트 통합, B-46 완료, I-05 추천앱 아이디어 등록
 - 3/27: keep B-35~B-37 완료 (파트너 오염 방지, 다세대 백업, 교차 오염 검증). B-38~B-42 추가. gym/study/docs 커밋 다수
