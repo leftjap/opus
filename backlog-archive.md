@@ -26,6 +26,7 @@
 | B-52 | 운동 | 종목카드 PR 기준 자극 메시지 | 완료 3/29 | getExerciseBestSessionVolume 추가, motivateHtml 재구성, 세트 환산, 톤 변화 |
 | B-54 | 운동 | iOS PWA 롱프레스 액션시트 ghost click 닫힘 | 완료 3/29 | _actionSheetOpenTime 타임스탬프, hideActionSheet 400ms 가드 |
 | B-53 | keep | 멀티디바이스 동기화 레이스 컨디션 수정 | 완료 3/29 | loadDatabase merge 방식 전환 + _softDelete updated 갱신 + catch 오타 수정 |
+| B-59 | keep | SMS 수신 시 카드 SMS 시트에 append-only 동시 기록 | 완료 3/29 | saveExpenseFromSMS appendRow + importCardSmsSheet H열 우선 사용 + clasp push |
 
 ### B-48 운동 · 종목 네비 롱프레스 바텀시트 — 완료 (2026-03-28)
 - **한 줄 요약:** 종목 네비 버튼을 꾹 누르면 종목 완료/삭제 바텀시트가 뜨도록 하는 기능
@@ -107,3 +108,13 @@
   - [x] 테스트 글 "주말 한강 피크닉"이 제거되었다
 - **현재:** 완료. loadDatabase merge 방식 전환 + _softDelete updated 갱신 + catch 오타 수정.
 - **커밋 태그:** B-53
+
+### B-59 keep · SMS 수신 시 카드 SMS 시트에 append-only 동시 기록 — 완료 (2026-03-29)
+- **한 줄 요약:** SMS 수신 시 가계부 DB에만 저장되던 데이터를 카드 SMS 시트에도 append-only로 자동 기록해서, 클라이언트 덮어쓰기로 인한 데이터 손실을 방지하는 작업
+- **완료 조건:**
+  - [x] saveExpenseFromSMS에서 DB 저장 직전에 시트 appendRow 호출
+  - [x] 수신시각, SMS 원문, 금액, 매출처, 카드, 카테고리, 브랜드, 결제일, 결제시각이 시트에 기록된다
+  - [x] importCardSmsSheet에서 H열(결제일)이 있으면 우선 사용, 없으면 A열(sent_date) 사용
+  - [x] 기존 형식(H열 없음)과 새 형식(H열 있음) 데이터 모두 호환성 유지
+- **현재:** 완료. Code.js 변경 2건 + clasp push 완료. GAS 웹앱 재배포 및 실사용 검증 대기.
+- **커밋 태그:** B-59
