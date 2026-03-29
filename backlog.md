@@ -82,7 +82,7 @@
   - [x] 각 항목에 "영구 삭제" 버튼이 있고 누르면 완전히 제거된다
   - [x] 영구 삭제 시 서버 가드(B-54 검증 4.5)와 호환
   - [x] 모바일/태블릿/PC에서 정상 동작 확인
-- **현재:** 완료. 쓰기 함수(newDoc/saveBook/saveQuote/saveMemo/togglePin) raw 배열 전환 + saveCurDoc _deleted 보존 + 서버 가드 자동 보정 + push 실패 시 서버 덮어쓰기 방지.
+- **현재:** 코드 완료. 쓰기 함수(newDoc/saveBook/saveQuote/saveMemo/togglePin) raw 배열 전환 + saveCurDoc _deleted 보존 + 서버 가드 자동 보정 + push 실패 시 서버 덮어쓰기 방지 + **saveCurDoc 빈 문서 덮어쓰기 레이스 컨디션 가드 추가**. GAS 재배포 + 검증 대기.
 - **커밋 태그:** B-55
 
 ### B-56 상세
