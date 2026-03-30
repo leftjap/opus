@@ -31,6 +31,7 @@
 | B-58 | keep | 삭제한 글이 새로고침 후 다시 나타남 | 3/29 | merge 시 _deleted 가드 + push 실패 시 dirty flag로 서버 pull 차단 |
 | B-56 | keep | 에디터에서 제목을 입력해도 리스트에 반영되지 않음 | 3/30 | saveLocalOnly에서 .lp-item.on 제목 경량 갱신 추가 |
 | B-57 | keep | iOS PWA 제목→본문 탭 시 UI 깨짐 | 3/30 | edBody focus 시 scrollArea.scrollTop + window.scrollTo 보정 |
+| B-61 | keep | iOS PWA 초기 로드 시 빈 문서 자동 생성 방지 | 3/30 | _serverLoaded 플래그 추가, init() 조건 보강 |
 
 ### B-48 운동 · 종목 네비 롱프레스 바텀시트 — 완료 (2026-03-28)
 - **한 줄 요약:** 종목 네비 버튼을 꾹 누르면 종목 완료/삭제 바텀시트가 뜨도록 하는 기능
@@ -160,3 +161,16 @@
 - **해결:** `edBody` focus 이벤트 리스너 추가. focus 시 `requestAnimationFrame`에서 `.editor-scroll-area`의 scrollTop을 0으로 리셋하고, `window.scrollTo(0,0)`으로 window 스크롤도 복원. iOS가 내부적으로 키보드 토글 시 스크롤을 과도하게 조정하는 문제를 JS에서 보정.
 - **현재:** ✅ 완료 (editor.js setupEnterKey 함수에 edBody focus 시 스크롤 보정 로직 추가)
 - **커밋 태그:** B-57
+
+### B-61 keep · iOS PWA 초기 로드 시 빈 문서 자동 생성 방지 — 완료 (2026-03-30)
+- **한 줄 요약:** iOS PWA에서 서버 응답 지연/실패 시 자동으로 생성되는 빈 문서 방지
+- **완료 조건:**
+  - [x] PC 정상 동기화 시 기존 동작 유지
+  - [x] iOS PWA 서버 응답 정상 시 기존 동작 유지
+  - [x] iOS PWA 서버 응답 지연/실패 시 빈 문서 미생성
+  - [x] 신규 사용자 (서버 데이터 없음) 시 빈 문서 정상 생성
+  - [x] 오프라인 전용 (GAS_URL 없음) 시 빈 문서 정상 생성
+- **원인:** app.js init()에서 getDocs('navi') 반환이 빈 배열이고 SYNC._dbLoading = false일 때 newDoc()을 무조건 호출. 서버 응답 미완료 상태와 구분되지 않아 빈 문서 생성됨.
+- **해결:** js/sync.js에 _serverLoaded: false 플래그 추가 → loadDatabase() 성공 시에만 true 설정. js/app.js init()에 조건 추가.
+- **관련 코드:** js/sync.js (_serverLoaded), js/app.js (init), js/data.js, js/sync.js (loadDatabase)
+- **커밋 태그:** B-61
