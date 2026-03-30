@@ -24,7 +24,7 @@
 | B-46 | 오늘의내비 | AGENTS.md 경량화 — 소연 피드백 지침서 분리 | 완료 3/28 | B-31과 통합 완료 |
 | B-48 | 운동 | 종목 네비 롱프레스 바텀시트 | 완료 3/28 | bindNavLongPress에 showNavActionSheet 추가 |
 | B-52 | 운동 | 종목카드 PR 기준 자극 메시지 | 완료 3/29 | getExerciseBestSessionVolume 추가, motivateHtml 재구성, 세트 환산, 톤 변화 |
-| B-54 | 운동 | iOS PWA 롱프레스 액션시트 ghost click 닫힘 | 완료 3/29 | _actionSheetOpenTime 타임스탬프, hideActionSheet 400ms 가드 |
+| B-54 (gym) | 운동 | iOS PWA 롱프레스 액션시트 ghost click 닫힘 | 완료 3/29 | _actionSheetOpenTime 타임스탬프, hideActionSheet 400ms 가드 |
 | B-53 | keep | 멀티디바이스 동기화 레이스 컨디션 수정 | 완료 3/29 | loadDatabase merge 방식 전환 + _softDelete updated 갱신 + catch 오타 수정 |
 | B-59 | keep | SMS 수신 시 카드 SMS 시트에 append-only 동시 기록 | 완료 3/29 | saveExpenseFromSMS appendRow + importCardSmsSheet H열 우선 사용 + clasp push |
 | B-60 | keep | Google Drive 외부 로컬 일일 백업 | 3/29 | PowerShell + Task Scheduler 자동화 |
