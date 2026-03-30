@@ -59,7 +59,7 @@
   - 완료 후 backlog.md 갱신: (해당 체크박스 [x] 처리 + 현재 상태 문구 업데이트)
 - 영향 범위 분석: 수정 대상 파일, 수정 금지, 영향 받는 전역 변수/함수, 고위험 함수 수정 여부, POLT 검증 (① Dry Run, ② 교훈 대조, ③~⑤ 결함), 변경 후 확인할 기존 동작
 - Step별: 파일(절대 경로), 위치(함수명), 작업, 교체 코드(함수 전체), 영향 받는 함수, 완료 확인
-- Step N-1: opus.md 갱신 (해당 시) — 파일: `C:\dev\opus\opus.md`. 다른 레포에서 실행 중일 때 절대 경로 필수.
+- Step N-1: 운영 문서 갱신 — 대상: opus.md(해당 시), backlog.md(해당 시), CHANGELOG.md(필수). 파일: `C:\dev\opus\opus.md`, `C:\dev\opus\backlog.md`, 프로젝트별 `CHANGELOG.md`. 다른 레포에서 실행 중일 때 절대 경로 필수.
 - Step N: 커밋 & 푸시
 - ⛔ 여기서 작업을 종료하세요. 추가 작업을 수행하거나 사용자에게 다음 행동을 묻지 마세요.
 - 최종 확인 (사용자 수동) — Opus가 아래 형식으로 채운다. 항목 수: 핵심 1~2개 + 회귀 1개. 비대화 방지를 위해 합계 3개 이하.
@@ -109,11 +109,12 @@
 ### CLAUDE.md
 AGENTS.md 고유 주의사항이 변경되면 해당 프로젝트 CLAUDE.md도 갱신한다. 작업지시서에 AGENTS.md 갱신 Step이 포함될 때 CLAUDE.md 갱신 필요 여부를 확인하고, 필요하면 Step을 추가한다.
 
-### opus.md
-모든 작업지시서의 커밋 & 푸시 Step 직전에 opus.md 갱신 Step을 포함한다. 절대 생략하지 않는다.
-- 파일: C:\dev\opus\opus.md
-- 크롤링: https://raw.githubusercontent.com/leftjap/opus/main/opus.md
-- 갱신 불필요: CSS만 변경, 오타 수정 등 백로그 외 사소한 수정
+### 운영 문서 갱신
+모든 작업지시서의 마지막 커밋 Step 직전에 운영 문서 갱신 Step을 포함한다. 절대 생략하지 않는다.
+갱신 대상: opus.md(교훈 추가 시), backlog.md(백로그 연결 작업 시), CHANGELOG.md(모든 작업지시서).
+- opus.md 파일: C:\dev\opus\opus.md
+- opus.md 크롤링: https://raw.githubusercontent.com/leftjap/opus/main/opus.md
+- opus.md·backlog.md 갱신 불필요: 백로그 외 사소한 수정(CSS만 변경, 오타 수정 등). CHANGELOG는 이 경우에도 기록한다.
 
 ### CHANGELOG 갱신
 
