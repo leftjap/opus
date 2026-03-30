@@ -59,7 +59,6 @@ AI의 응답은 **간결한 경어체**로 작성한다. 작업지시서·방향
 - 소스 파일 크롤링 전에 AGENTS.md의 크롤링 제외 목록을 확인한다. 제외 파일은 크롤링하지 않고 업로드를 요청한다.
 - 작업지시서 생성 시 common-rules.md의 형식을 따른다. **코드가 포함된 작업지시서 생성 전에 common-rules.md를 크롤링한다(POLT·형식 규칙 참조).** 같은 세션 내 이미 크롤링했으면 생략 가능.
 - opus.md의 교훈(4번)과 검증 규칙(5번)은 모든 작업지시서에 자동 적용된다.
-- troubleshooting-log.md 참조 조건: ①교훈에서 명시 ②같은 B-xx 2회+ 시도 ③사용자 재발 키워드("또/다시/재발/안 됐어"). 해당 시 크롤링하여 이전 시도를 확인한다.
 - 사용자가 백로그 ID를 언급했는데 직전 크롤링 결과에 없으면 backlog-archive.md를 크롤링한다.
 - 같은 세션에서 작업지시서를 전달한 뒤 후속 작업 요청이 오면, 직전 작업지시서의 커밋 여부를 GitHub Commits API로 확인한다. 미실행이면 사용자에게 알리고, 실행 결과에 따라 backlog.md를 갱신한 뒤 후속 작업을 진행한다.
 
@@ -173,14 +172,14 @@ AI는 작업지시서 출력 전에 이 목록을 스캔한다. 해당 교훈이
 | L-10 | GAS Code.js 수동 복사 실패 | clasp push Step 필수. Apps Script 에디터 수동 복사 금지 | GAS 전체 |
 | L-11 | iOS PWA CSS 캐시 | index.html 캐시 제어 meta + CSS/JS ?v= 갱신 | 전체 |
 | L-12 | iOS PWA 하단 고정 버튼 위치 어긋남 (5회 시행착오) | JS로 standalone 감지 → .ios-pwa 클래스 → CSS 고정값. env() 디버깅 금지 | 전체 웹앱 |
-| L-13 | 같은 버그 수정 2회+ 실패 (Opus 설계 실패) | troubleshooting-log.md에 시도 이력 기록 + 크롤링 후 이전 가설 재검토. 백로그 메모에 "N회 시도 미해결" 기재 | 전체 |
-| L-14 | decisions/ 폴더 용도 범위 | 큰 결정 근거만 보관. 사소한 건 교훈 1줄. 쓰기: ①opus/common-rules 새 섹션·규칙 체계 신설 ②아키텍처·스키마 변경 ③도구·스택 전환 검토 — 해당 시 작업지시서에 decisions/ 생성 + INDEX.md 갱신 Step 자동 포함. 작업지시서 없이 결정이 내려진 경우에도 Claude Code에 INDEX.md 갱신을 직접 지시한다. 읽기: ①②③과 동일 주제 논의 시 INDEX.md를 먼저 크롤링하여 기존 결정 확인 | 전체 |
+| L-13 | 같은 버그 수정 2회+ 실패 (Opus 설계 실패) | backlog 상세 블록의 "시도한 접근" 필드에 시도 이력 기록 + 이전 가설 재검토. 백로그 메모에 "N회 시도 미해결" 기재. CHANGELOG에 각 시도를 Fixed 항목으로 기록 | 전체 |
+| L-14 | 큰 결정 기록 방식 | 프로젝트별 CHANGELOG.md의 Changed/Added 항목에 이유 1문장을 덧붙여 기록한다. 별도 ADR 파일을 만들지 않는다. 사소한 건 교훈 1줄. 결정의 상세 맥락이 필요하면 Genspark 대화 URL을 CHANGELOG 항목에 참조한다 | 전체 |
 | L-15 | 동일 파일명 프로젝트 간 혼동 (서재 GAS 소실) | 모든 소스 첫 줄 PROJECT: 헤더 필수. 업로드 시 대조. 불일치 시 중단 | 전체 |
 | L-16 | Haiku가 작업지시서 실행 전 허가를 구함 | 작업지시서 상단에 ⚡ 즉시 실행 지시, 하단 ⛔에 "묻지 마세요" 추가 | 전체 |
 | L-17 | Opus가 사용자 제안에 무조건 동의 후 사후 합리화 | D-01~D-06 적용. "좋은 아이디어입니다"로 시작 금지 | 전체 |
 | L-18 | 백로그 상세는 등록 시점에 즉시 기록한다. "나중에 채운다"는 규칙은 지켜지지 않으며, 세션이 바뀌면 맥락이 유실된다. (근거: Genspark 대화 2026-03-28, OpenClaw 사례 "Write it down or lose it") | 전체 |
-| L-19 | AI 생성 코드가 로직 오류(1.75×)·회귀(75% 에이전트)를 빈번히 발생시킴 | common-rules.md 6-1 POLT 적용 — Opus가 코드 출력 전 ⓪Scope Lock→①Dry Run→②Self-Critique→③Wiring Check→④Preservation Check→⑤Faithfulness Check 수행. 근거: decisions/2026-03-28-polt-adoption.md | 전체 |
-| L-20 | 분석·설계 산출물에서 범위 누락·참조 불일치·전제 오류가 반복됨 | opus.md 4-2 ALT 적용 — ①산출물 작성 → ②범위·참조·전제·역추적 4항목 검증 → ③결함 시 수정 → 재검증(최대 1회). 근거: decisions/2026-03-28-analysis-verification-checklist.md | 전체 |
+| L-19 | AI 생성 코드가 로직 오류(1.75×)·회귀(75% 에이전트)를 빈번히 발생시킴 | common-rules.md 6-1 POLT 적용 — Opus가 코드 출력 전 ⓪Scope Lock→①Dry Run→②Self-Critique→③Wiring Check→④Preservation Check→⑤Faithfulness Check 수행 | 전체 |
+| L-20 | 분석·설계 산출물에서 범위 누락·참조 불일치·전제 오류가 반복됨 | opus.md 4-2 ALT 적용 — ①산출물 작성 → ②범위·참조·전제·역추적 4항목 검증 → ③결함 시 수정 → 재검증(최대 1회) | 전체 |
 | L-21 | 백로그 버그 항목의 맥락이 세션 간 유실되어 작업 착수 불가 | 버그 등록 시 재현(환경/경로/관찰/기대/빈도) + 원인 추정(①의심 경로 ②확인·배제 ③다음 단계) 필수 기재. 미분석 상태 등록 금지. 모든 항목에 관련 코드(파일·함수·흐름) 필수. 근거: QA Wolf·Cursa 가이드 + MS SRE Agent "Shared Context" 사례 | 전체 |
 
 ---
