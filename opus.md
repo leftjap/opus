@@ -147,26 +147,24 @@ AI는 작업지시서 출력 전에 이 목록을 스캔한다. 해당 교훈이
 2. 방지책을 Step에 자동 포함
 3. 검증 강도를 한 단계 상향
 
-모델 전환 시 (예: Haiku 4.5 → 5.0): 교훈 전체를 1회 검토하여, 모델 능력 향상으로 불필요해진 항목을 아카이브한다.
+모델 전환 시 (예: Haiku 4.5 → 5.0): 교훈 전체를 1회 검토하여, 모델 능력 향상으로 불필요해진 항목을 아카이브한다. 트리거: 섹션 0-1의 실행 모델 버전이 변경되었을 때.
 
 | ID | 패턴 | 방지책 | 대상 |
 |---|---|---|---|
 | L-01 | Haiku가 수정 위치 못 찾음 | 함수/선택자 전체를 교체 코드로 제공 | 전체 |
 | L-02 | switchTab else 블록 패널 복원 누락 | 에디터 서브 패널 복원 체크리스트 | keep |
 | L-03 | gesture.js 인라인 스타일 덮어씀 | CSS !important + 전용 클래스 | keep |
-| L-04 | clasp push 후 웹앱 미반영 | 수동 재배포 안내 포함 | GAS 전체 |
+| L-04 | GAS 배포 누락·수동 복사 실패 | clasp push Step 필수 + 웹앱 재배포 안내 포함. Apps Script 에디터 수동 복사 금지 | GAS 전체 |
 | L-05 | 동기화로 더미 데이터 복귀 | 서버+로컬 양쪽 정리, soft delete 30일, 급감 차단. 상세는 각 AGENTS.md 참조 | gym, study, keep |
 | L-06 | import 시 날짜 밀림 | import 후 미래 날짜 확인 Step | keep |
 | L-07 | 멀티유저 경로 누락 | 멀티유저 변경 시 양쪽 계정 경로 시뮬레이션. 체크리스트는 keep AGENTS.md 참조 | keep |
 | L-08 | sed/tr로 파일 소실 | Unix 텍스트 도구 사용 금지 | 전체 |
-| L-09 | CLAUDE.md/AGENTS.md 비대화로 준수율 하락 | 루트 문서는 라우터. 상시 로드 100줄 이하. progressive disclosure | 전체 |
-| L-10 | GAS Code.js 수동 복사 실패 | clasp push Step 필수. Apps Script 에디터 수동 복사 금지 | GAS 전체 |
+| L-09 | CLAUDE.md/AGENTS.md 비대화로 준수율 하락 | 루트 문서는 라우터 역할만. progressive disclosure 적용 (기준: common-rules.md 섹션 12) | 전체 |
 | L-11 | iOS PWA CSS 캐시 | index.html 캐시 제어 meta + CSS/JS ?v= 갱신 | 전체 |
 | L-12 | iOS PWA 하단 고정 버튼 위치 어긋남 (5회 시행착오) | JS로 standalone 감지 → .ios-pwa 클래스 → CSS 고정값. env() 디버깅 금지 | 전체 웹앱 |
 | L-13 | 같은 버그 수정 2회+ 실패 (Opus 설계 실패) | backlog 상세 블록의 "현재" 필드에 "N회 시도, 이전 접근: [요약]" 형식으로 시도 이력 기록 + 이전 가설 재검토. CHANGELOG에 각 시도를 Fixed 항목으로 기록 | 전체 |
 | L-14 | 큰 결정 기록 방식 | 프로젝트별 CHANGELOG.md의 Changed/Added 항목에 이유 1문장을 덧붙여 기록한다. 별도 ADR 파일을 만들지 않는다. 사소한 건 교훈 1줄. 결정의 상세 맥락이 필요하면 Genspark 대화 URL을 CHANGELOG 항목에 참조한다 | 전체 |
 | L-15 | 동일 파일명 프로젝트 간 혼동 (서재 GAS 소실) | 모든 소스 첫 줄 PROJECT: 헤더 필수. 업로드 시 대조. 불일치 시 중단 | 전체 |
-| L-16 | Haiku가 작업지시서 실행 전 허가를 구함 | 작업지시서 상단에 ⚡ 즉시 실행 지시, 하단 ⛔에 "묻지 마세요" 추가 | 전체 |
 | L-17 | Opus가 사용자 제안에 무조건 동의 후 사후 합리화 | D-01~D-06 적용. "좋은 아이디어입니다"로 시작 금지 | 전체 |
 | L-19 | AI 생성 코드가 로직 오류(1.75×)·회귀(75% 에이전트)를 빈번히 발생시킴 | common-rules.md 6-1 POLT 적용 — Opus가 코드 출력 전 ⓪Scope Lock→①Dry Run→②Self-Critique→③Wiring Check→④Preservation Check→⑤Faithfulness Check 수행 | 전체 |
 | L-20 | 분석·설계 산출물에서 범위 누락·참조 불일치·전제 오류가 반복됨 | opus.md 4-2 ALT 적용 — ①산출물 작성 → ②범위·참조·전제·역추적 4항목 검증 → ③결함 시 수정 → 재검증(최대 1회) | 전체 |
