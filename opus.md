@@ -112,11 +112,21 @@ opus.md 갱신 Step 실행 시 줄 수를 확인한다. 200줄 초과 시 아카
 ### 읽기
 사용자가 백로그 내용을 물으면 backlog.md를 크롤링하여 정리·보고한다.
 
-### 상태 점검
-사용자가 커밋 확인을 요청하면 GitHub API로 최근 커밋을 수집하고 backlog.md와 대조하여 보고한다. 비인증 rate limit: 60회/시간.
+### 작업지시서 생성 전 매칭
+작업지시서 생성 전에 backlog.md를 확인하여 해당 B-xx가 있는지 매칭한다. 있으면 작업지시서에 백로그 컨텍스트(B-xx, 완료 조건)를 포함한다. 없으면 백로그 외 작업으로 진행한다. 사용자가 B-xx를 명시했거나 맥락이 명확하면 크롤링 없이 포함한다.
+
+### 상태 점검 및 자동 관리
+사용자가 "커밋 확인" 또는 백로그를 호출하면:
+1. GitHub Commits API 또는 CHANGELOG.md로 최근 작업 결과를 확인한다.
+2. B-xx 태그가 있는 커밋과 backlog.md 완료 조건을 대조한다.
+3. 완료 조건이 모두 충족된 항목은 backlog-archive.md로 이관한다.
+4. 애매한 항목은 사용자에게 확인 후 처리한다.
+5. 변동 없는 항목은 "그 외 변동 없음"으로 묶어 보고한다.
+
+비인증 rate limit: 60회/시간.
 
 ### 갱신
-사용자가 등록·변경을 지시할 때 기록한다. 작업지시서 완료 후 갱신은 common-rules.md 섹션 5 참조.
+사용자가 등록·변경을 지시할 때 기록한다. 작업지시서 완료 후 갱신은 common-rules.md 참조.
 
 ---
 
@@ -145,9 +155,9 @@ AI는 작업지시서 출력 전에 이 목록을 스캔한다. 해당 교훈이
 | L-02 | switchTab else 블록 패널 복원 누락 | 에디터 서브 패널 복원 체크리스트 | keep |
 | L-03 | gesture.js 인라인 스타일 덮어씀 | CSS !important + 전용 클래스 | keep |
 | L-04 | clasp push 후 웹앱 미반영 | 수동 재배포 안내 포함 | GAS 전체 |
-| L-05 | 동기화로 더미 데이터 복귀 | 서버+로컬 양쪽 정리 + 타임스탬프 엄격 비교 + soft delete(30일) + 서버 id 소실 차단. 프로젝트별 급감 차단 규칙은 각 AGENTS.md 참조 | gym, study, keep |
+| L-05 | 동기화로 더미 데이터 복귀 | 서버+로컬 양쪽 정리, soft delete 30일, 급감 차단. 상세는 각 AGENTS.md 참조 | gym, study, keep |
 | L-06 | import 시 날짜 밀림 | import 후 미래 날짜 확인 Step | keep |
-| L-07 | 멀티유저 경로 누락 | keep 인증·동기화·배포 변경 시 양쪽 계정(leftjap, soyoun312) 경로를 모두 시뮬레이션. 체크리스트는 keep AGENTS.md 참조 | keep |
+| L-07 | 멀티유저 경로 누락 | 멀티유저 변경 시 양쪽 계정 경로 시뮬레이션. 체크리스트는 keep AGENTS.md 참조 | keep |
 | L-08 | sed/tr로 파일 소실 | Unix 텍스트 도구 사용 금지 | 전체 |
 | L-09 | CLAUDE.md/AGENTS.md 비대화로 준수율 하락 | 루트 문서는 라우터. 상시 로드 100줄 이하. progressive disclosure | 전체 |
 | L-10 | GAS Code.js 수동 복사 실패 | clasp push Step 필수. Apps Script 에디터 수동 복사 금지 | GAS 전체 |
