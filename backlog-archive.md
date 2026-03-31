@@ -35,6 +35,7 @@
 | B-54 | keep | 데이터 보존 안전장치 (soft delete + 소실 차단 + 백업 30일) | 3/30 | 코드 완료 + 검증 완료. 30일 자동 정리는 시간 경과 후 확인 |
 | B-62 | opus | 작업지시서 범위 이탈 방지 + 세션 시작 흐름 재설계 | 3/31 | Scope Control 규칙 5건 + 세션 시작 흐름 변경 + 실 운영 검증 완료 |
 | B-02 | 어학 | 카드 난이도 판정 → 복습 일정 자동 조정 | 3/31 | judgeReview O/△/X → nextReview 갱신 + saveLangData + saveToServer 완료. getReviewItems 필터 정상 동작 확인 |
+| B-01 | 서재 | 인용문 태그 체계 완성 (일괄 적용 + 잔여분 + 자동 포함) | 3/31 | 102권 전체 태그 완료. Phase 3은 현재 UI 없음 — 웹앱 구축 시 재검토 |
 
 ### B-48 운동 · 종목 네비 롱프레스 바텀시트 — 완료 (2026-03-28)
 - **한 줄 요약:** 종목 네비 버튼을 꾹 누르면 종목 완료/삭제 바텀시트가 뜨도록 하는 기능
@@ -208,3 +209,19 @@
 - **관련 코드:** study js/review.js judgeReview (O/△/X 분기) → currentInterval·consecutivePasses 조정 → js/storage.js reviewQueue 갱신
 - **현재:** ✅ 완료. judgeReview → nextReview 갱신 + saveLangData + saveToServer 동작 확인. getReviewItems의 nextReview ≤ today 필터로 복습 목록 자동 반영.
 - **커밋 태그:** B-02
+
+### B-01 서재 · 인용문 태그 체계 완성 — 완료 (2026-03-31)
+- **한 줄 요약:** 서재의 인용문 태그 체계를 완성하는 작업 — 기존 89권 일괄 적용, 나머지 13권 후속 적용, 새 책 등록 시 자동 포함까지
+- **완료 조건:**
+  - Phase 1 — 89권 일괄 적용:
+    - [x] PowerShell 스크립트 11회 실행 완료
+    - [x] 89권 모두 quote_tags 필드가 채워져 있다
+    - [x] 서재 화면에서 책을 열면 인용문 태그가 표시된다
+  - Phase 2 — 나머지 13권 적용:
+    - [x] 나머지 13권 모두 quote_tags 필드가 채워져 있다
+    - [x] 서재 화면에서 해당 책들의 인용문 태그가 표시된다
+  - Phase 3 — 새 책 등록 시 태그 자동 포함:
+    - 현재 서재에 웹 UI가 없으므로 Phase 3 완료 조건(입력란·저장·표시)은 해당 없음. 웹앱 구축 시 재검토.
+- **관련 코드:** 서재 gas/Code.js add_book·update_quote_tags, quotes-data.json
+- **현재:** ✅ 완료. DB 102권 전체 태그 확인 (list_books API 검증). Phase 3은 서재 웹앱 미존재로 보류.
+- **커밋 태그:** B-01

@@ -81,7 +81,7 @@ opus.md 갱신 Step 실행 시 줄 수를 확인한다. 200줄 초과 시 아카
 
 | 프로젝트 | 경로 | 레포 | AGENTS.md | 상태 |
 |---|---|---|---|---|
-| 서재 어구록 | `C:\dev\docs\서재\` | `leftjap/docs` | `서재/AGENTS.md` | B-01 대기 |
+| 서재 어구록 | `C:\dev\docs\서재\` | `leftjap/docs` | `서재/AGENTS.md` | 운영 중 |
 | 오늘의내비 | `C:\dev\docs\오늘의내비\` | `leftjap/docs` | `오늘의내비/AGENTS.md` | 운영 중 |
 | 운동 | `C:\dev\apps\gym\` | `leftjap/gym` | 루트 | 운영 중 |
 | 어학 | `C:\dev\apps\study\` | `leftjap/study` | 루트 | Phase 2 진행 중 |
