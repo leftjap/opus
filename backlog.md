@@ -75,7 +75,8 @@
 | B-42 | 03/28 19:16 | keep | 알림 패널 시간 표시 오류 수정 | 버그 | P1 | |
 | B-25 | 03/28 19:16 | keep | 파트너 모드 진입 시 로딩 시간 단축 | 개선 | P2 | |
 | B-18 | 03/28 19:16 | keep+서재 | 서재 발췌문 통합 | 새 기능 | P3 | B-01 완료, 착수 가능 |
-| B-57 | 03/31 17:30 | keep+gym+study+explorer | 회귀 방지 자동화 시스템 구축 | 운영 | P1 | Phase 1 완료 + Phase 2 완료 + Phase 3 완료 (gym 테스트 2개 영역 + 보호 주석 8개소 + 체크리스트) |
+| B-72 | 03/31 19:45 | keep+gym | CSS 보호 속성 자동 탐지 테스트 | 운영 | P2 | B-57 완료 후 후속 과제 |
+| B-73 | 03/31 19:45 | keep+gym | 브라우저 특정 동작 보호 보강 | 운영 | P3 | B-57 완료 후 후속 과제 |
 
 ### B-15 상세
 - **등록일:** 03/28 19:16
@@ -170,15 +171,53 @@
     - [ ] UI/CSS 깨짐을 감지할 수 있는 도구(BackstopJS, Percy, Playwright 등)를 검토한다
     - [ ] 현재 환경(로컬 Claude Code 실행)에 적합한 방식을 선정하여 도입한다
   - Phase 3 — 테스트 스위트 정식화:
-    - [ ] 보호 규칙 테스트가 프로젝트에 영구 커밋되어 정식 테스트 스위트로 운영된다
+    - [x] 보호 규칙 테스트가 프로젝트에 영구 커밋되어 정식 테스트 스위트로 운영된다
 - **관련 코드:**
-  - keep `__tests__/` — 32 tests: docs-crud(5), soft-delete(6), expense(11), sync-merge(10)
-  - gym `__tests__/` — 27 tests: session-crud(6), pr-detection(7), sync-merge(8), set-integrity(6)
-  - 양쪽 `package.json` + `.git/hooks/pre-commit` + `.claude/settings.json`(permissions + PreToolUse hook)
-  - `common-rules.md` §4 "자동 테스트 규칙(Regression Guard)"
+  - keep `__tests__/` — 48 tests: docs-crud(5), soft-delete(6), expense(11), sync-merge(10), sms-parity(5), switchTab(3), flush-beacon(8)
+  - gym `__tests__/` — 38 tests: session-crud(6), pr-detection(7), sync-merge(8), set-integrity(6), flush-beacon(5), showscreen-state(6)
+  - 양쪽 `style.css` — `B-57 PROTECT` 주석 (keep 7개소, gym 8개소)
+  - 양쪽 `AGENTS.md` — 보호 체크리스트 추가
+  - `common-rules.md` — §3 변경 금지 CSS 속성 (keep, gym), §4 "자동 테스트 규칙(Regression Guard)"
 - **선행 조건:** 없음
-- **현재:** Phase 0+1 완료, 3중 방어 검증 완료. ①common-rules.md Regression Guard 규칙(Opus→작업지시서 반영) ②PreToolUse hook(--no-verify 차단, Haiku가 설정 인식 확인) ③pre-commit hook(npm test 실패 시 커밋 차단, 의도적 파손 테스트 통과). keep에서 추가 보호 테스트 3개 영역(5: SMS 파서 클라이언트↔서버 동기화, 6: switchTab 상태 정합성, 7: sendBeacon flush 페이로드) + Code.js 매핑 테이블 20+건 불일치 수정 완료(전체 48건 PASS). study는 개발 미완료(Phase 2 진행 중)로 보류, explorer는 사용 빈도 낮아 보류. 다음: Phase 2(시각적 회귀) 또는 백로그(B-42, B-15 등) 진행
+- **현재:** ✅ **완료** — Phase 0·1·2·3 전체 완료. 최종 상태:
+  - Phase 1 (keep): 32건 테스트 + Code.js 동기화 완료
+  - Phase 2 (keep): 16건 추가 테스트 + style.css 7개소 보호 주석 + AGENTS.md 체크리스트 추가
+  - Phase 3 (gym): 11건 추가 테스트 + style.css 8개소 보호 주석 + AGENTS.md 체크리스트 추가 + common-rules.md 통합
+  - 총 86건 테스트 모두 PASS
+  - Phase 2(시각적 회귀 테스트)는 후속 과제 B-72(CSS 자동 탐지)로 등록
+  - B-73(브라우저 동작 보호)은 E2E 도입 필요로 보류
 - **커밋 태그:** B-57
+
+### B-72 상세
+- **등록일:** 03/31 19:45
+- **한 줄 요약:** B-57 PROTECT 주석이 달린 CSS 속성(값·선언)이 변경·삭제되었는지 자동 감지하는 테스트를 구현하여, 시각적 회귀를 방지하는 작업
+- **완료 조건:**
+  - [ ] `B-57 PROTECT` 주석이 달린 CSS 속성 목록이 코드에 정의된다
+  - [ ] 빌드/테스트 단계에서 속성명+값 스냅샷과 비교하여 변경을 감지한다
+  - [ ] 테스트 실패 시 "어느 속성이 변경되었는지" 명확하게 보고된다
+  - [ ] keep(style.css 7개소), gym(style.css 8개소) 모두 대상으로 포함한다
+- **관련 코드:**
+  - keep `style.css` — .editor-content-wrap (min-height), .ed-topbar (position), safe-area-inset-bottom 관련 padding-bottom 전체
+  - gym `style.css` — .screens-container (padding-bottom), .workout-header (padding-top), .workout-content (padding-top), .rest-timer-bar (bottom), .stats-header/stats-scroll-area (padding), .settings-header/settings-content (padding)
+  - `common-rules.md` — 변경 금지 CSS 속성 섹션
+- **선행 조건:** B-57 완료
+- **현재:** 미착수. 방식 검토 필요 — ① CSS 파싱(정규식 또는 경량 파서) ② 속성명+값 스냅샷 저장 ③ 테스트 시 비교 ④ 실패 메시지 포맷
+- **커밋 태그:** B-72
+
+### B-73 상세
+- **등록일:** 03/31 19:45
+- **한 줄 요약:** CSS 테스트만으로는 감지할 수 없는 브라우저 특정 동작(실제 렌더링, History API, requestAnimationFrame 타이밍 등)을 보호하는 보강 규칙을 정의하는 작업
+- **완료 조건:**
+  - [ ] keep 캘린더 date picker 컨텍스트별 동작 검증 규칙이 AGENTS.md에 추가된다
+  - [ ] gym 휴식 타이머 UI 실동작 검증 규칙(requestAnimationFrame + DOM 의존)이 AGENTS.md에 추가된다
+  - [ ] gym popstate 세션 보존(History API mock) 검증 규칙이 AGENTS.md에 추가된다
+  - [ ] 각 규칙이 실기기 테스트 또는 E2E 자동화로 검증 가능한 형태로 정의된다
+- **관련 코드:**
+  - keep `AGENTS.md` — 캘린더 터치 핸들러 규칙, CSS 클래스 전환 금지, DOM 교체 금지
+  - gym `AGENTS.md` — 타이머 requestAnimationFrame 규칙, popstate 세션 보존 규칙, showScreen 화면 정합성 규칙
+- **선행 조건:** B-57 완료
+- **현재:** 미착수. 현재는 AGENTS.md 문서 보호(B-57)로 대체된 상태. 실기기 테스트 또는 E2E(Playwright, Cypress 등) 도입 시 자동화 가능.
+- **커밋 태그:** B-73
 
 ### I-05 상세
 - **한 줄 요약:** 내가 평가한 영화/책/음악 데이터를 기반으로 취향을 분석하고, 새로운 콘텐츠를 추천해주는 개인 앱을 만드는 프로젝트
