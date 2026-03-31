@@ -77,7 +77,7 @@
 | B-33 | 03/28 19:16 | docs | docs 레포 하위 프로젝트 정리 | 운영 | P2 | |
 | B-18 | 03/28 19:16 | keep+서재 | 서재 발췌문 통합 | 새 기능 | P3 | B-01 후 |
 | B-55 | 03/29 14:00 | keep | 휴지통 UI — 삭제된 항목 조회 및 복원 | 새 기능 | P4 | 코드 완료, GAS 재배포+검증 대기 |
-| B-63 | 03/31 09:21 | opus | GAS 자동 배포 체계 구축 (clasp → GitHub Actions) | 운영 | P1 | B-54 완료. 착수 가능 |
+| B-63 | 03/31 09:21 | opus | GAS 자동 배포 체계 구축 (clasp → GitHub Actions) | 운영 | P1 | Phase 1 완료, Phase 2 대기 |
 
 ### B-55 상세
 - **등록일:** 03/29 14:00
@@ -175,12 +175,12 @@
 - **등록일:** 03/31 09:21
 - **한 줄 요약:** GAS 코드를 수정할 때마다 Apps Script 에디터에서 수동 배포하는 과정을 없애고, 터미널 명령어 한 줄 또는 git push만으로 배포가 완료되게 하는 작업
 - **완료 조건:**
-  - [ ] Phase 1: keep·서재에서 `npm run deploy` 한 줄로 GAS 배포가 완료된다
-  - [ ] Phase 1: gym·study에 clasp clone + deploy 스크립트가 설정된다
+  - [x] Phase 1: keep·서재·gym·study에서 deploy.ps1로 GAS 배포가 완료된다
+  - [x] Phase 1: gym·study에 clasp clone + deploy 스크립트가 설정된다
   - [ ] Phase 2: git push → GitHub Actions가 lint → 테스트 → clasp push → clasp deploy를 자동 실행한다
 - **관련 코드:** keep `gas/.clasp.json` + `gas/Code.js`, 서재 `gas/.clasp.json` + `gas/Code.js`, gym `gas/Code.js` (clasp 미연결), study `gas/Code.js` (clasp 미연결)
 - **선행 조건:** 없음 (B-54 완료 충족됨)
-- **현재:** 인수인계서 작성 완료. B-54 완료로 선행 조건 충족. keep·서재는 .clasp.json 존재 확인. clasp 로컬 설치 여부·Google 인증 여부 미확인. Phase 1부터 착수 예정.
+- **현재:** Phase 1 완료. 4개 프로젝트(keep·서재·gym·study)에 deploy.ps1 배치됨. 각 프로젝트의 .clasp.json 설정 완료. 서재 clasp push 검증 완료. Phase 2(GitHub Actions) 대기.
 - **커밋 태그:** B-63
 
 ---
