@@ -144,6 +144,7 @@
 | B-19 | 서재 | 나머지 13권 인용문 태그 적용 | P3 | B-01 후 |
 | B-26 | keep | 클로드 댓글 수동 운영 → API 자동화 | P3 | |
 | B-27 | keep | 서재 인용문 데이터를 댓글 참조 자료로 활용 | P3 | B-26 후 |
+| B-63 | gym→전체 | 테스트 인프라 구축 + Hook 활성화 (바이브코딩 워크플로우 개선) | P2 | Phase 0 완료(Scope Control). Phase 1~3 미착수 |
 
 ### B-15 상세
 - **한 줄 요약:** keep 앱에서 소연 게시물에 달리는 클로드 자동 댓글의 품질을 높여서, 더 자연스럽고 맥락에 맞는 댓글이 달리게 하는 작업
@@ -254,6 +255,17 @@
   - [ ] 참조된 인용문이 댓글에 자연스럽게 녹아 있다
 - **현재:** B-26 완료 대기 중
 - **커밋 태그:** B-27
+
+### B-63 상세
+- **한 줄 요약:** Playwright 테스트로 핵심 동작을 잠그고, Claude Code Hook으로 커밋 차단·보호 파일 수정 차단을 자동화하여 엔트로피 루프를 방지하는 작업
+- **완료 조건:**
+  - [ ] Phase 1: gym에 Playwright 설치 + 스모크 테스트 2개 + 시각 기준선 1개 작성, npm test로 실행 확인
+  - [ ] Phase 2: .claude/hooks/에 Stop Hook(테스트 실패 시 커밋 차단) + PreToolUse Hook(보호 파일 수정 차단) 설정, Windows 환경 동작 확인
+  - [ ] Phase 3: keep, study, explorer에 확대 적용 (GAS 전용 프로젝트 제외)
+- **관련 코드:** gym 전체 (시범) → keep, study, explorer (확대). package.json 신규 생성, playwright.config.js, tests/, .claude/hooks/ (Node.js 스크립트)
+- **현재:** Phase 0 완료 — common-rules.md에 Scope Control 규칙 5건 추가됨 (2026-03-31). Phase 1 방향 확인 완료 — 로컬 서버(serve) + Playwright webServer 방식 채택, 인증 불필요 스모크 테스트로 시작. index.html 초기 DOM 확인 후 테스트 대상 확정 필요.
+- **참고:** 인수인계서 전문은 이 세션 대화에 포함. Hook 설정 시 Windows 환경 주의(jq/grep 대신 Node.js), Stop Hook의 stop_hook_active 무한루프 방지 필수.
+- **커밋 태그:** B-63
 
 ---
 
