@@ -7,12 +7,13 @@
 
 ### Changed
 - 상태 점검 3단계: 조건부 CHANGELOG 크롤링 → 무조건 크롤링으로 변경. 원인 태그 스캔·diff 크롤링·영역 집계 절차를 통합 (opus.md) — 조건문에 의한 스캔 생략 방지 및 shift-left 원칙 적용
-
-### Changed
 - D-check 테이블 → 산문 압축. 점검 항목 유지, 테이블 형식 제거 — Opus 4.6 내재 지식으로 트리거 가능한 범용 개념이므로. (opus.md)
 - ALT 출력 규칙: 결함 없을 때도 `✅ ALT` 한 줄 필수 출력 — 오토리그레시브 모델 특성상 출력이 실행을 강제. (opus.md)
 - 검증 강도 규칙(섹션 4) 삭제, POLT 강화 조건으로 흡수. (opus.md, common-rules.md)
 - POLT 적용 조건에 "규모 무관·작업지시서마다 독립 수행" 명시. (common-rules.md)
+
+### Removed
+- .backlog.md.bak 제거, migrate 스크립트 4건 제거. .gitignore 추가. (정리)
 
 ### Removed
 - 상태 점검 보고서 "다음 할 것" 섹션 — 백로그 앱과 역할 중복. (opus.md)
