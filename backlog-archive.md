@@ -4,6 +4,14 @@
 
 ---
 
+## 2026-04 완료
+
+| ID | 프로젝트 | 작업 | 완료일 | 요약 |
+|---|---|---|---|---|
+| B-76 | 전체 | 하이쿠 백로그 등록 가능하도록 변경 | 4/1 | ~/.claude/CLAUDE.md 백로그 등록 규칙 신규 작성 + 첫 시험 등록(B-77) 완료 |
+
+---
+
 ## 2026-03 완료
 
 | ID | 프로젝트 | 작업 | 완료일 | 요약 |
@@ -255,3 +263,12 @@
 - **관련 코드:** keep/gym/study/.github/workflows/deploy-gas.yml, docs/.github/workflows/deploy-gas-seojai.yml
 - **현재:** ✅ 완료. 4개 레포에 GitHub Actions workflow 배치 완료 (2026-03-31). keep/gym/study는 deploy-gas.yml, docs(서재)는 deploy-gas-seojai.yml (경로: 서재/gas/). git push 시 자동 배포 실행 확인 대기.
 - **커밋 태그:** B-63
+
+### B-76 전체 · 하이쿠 백로그 등록 가능하도록 변경 — 완료 (2026-04-01)
+- **한 줄 요약:** 어느 프로젝트에서 작업 중이든 하이쿠에게 "백로그 등록해"라고 하면 규칙대로 backlog.md에 자동 등록되게 하는 작업
+- **완료 조건:**
+  - [x] `~/.claude/CLAUDE.md`에 백로그 등록 규칙이 작성되어 있다
+  - [x] 임의 프로젝트 세션에서 "백로그 등록해"라고 했을 때 하이쿠가 확인 질문 없이 backlog.md에 등록한다
+- **현재:** ✅ 완료. 전역 CLAUDE.md에 백로그 등록 규칙(등록일, 한 줄 요약, 메모리 연동) 신규 작성. B-77(백로그 칸반 앱) 첫 등록으로 기능 검증 완료.
+- **관련 코드:** `C:\Users\leftj\.claude\CLAUDE.md`, `C:\dev\opus\backlog.md`
+- **커밋 태그:** B-76
