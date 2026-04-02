@@ -48,7 +48,6 @@
 - **커밋 태그:** all-72
 - **중요:** true |
 | backlog-89 | 04/02 17:24 | Backlog | 백로그앱에 이미지 추가 | 신규 |  |
-| all-72 | 03/31 19:45 | 전체 (복합) | CSS 보호 속성 자동 탐지 테스트 | 운영 | keep-57 완료 후 후속 과제 |
 
 ### all-92 상세
 - **등록일:** 04/02 19:45
@@ -78,19 +77,6 @@
 - **선행 조건:** **
 - **현재:** **
 - **커밋 태그:** ** backlog-89
-
-### all-72 상세
-- **등록일:** 03/31 19:45
-- **한 줄 요약:** ** ** ** ** ** ** ** ** ** ** ** keep-57 PROTECT 주석이 달린 CSS 속성(값·선언)이 변경·삭제되었는지 자동 감지하는 테스트를 구현하여, 시각적 회귀를 방지하는 작업
-- **완료 조건:**
-  - [ ] `keep-57 PROTECT` 주석이 달린 CSS 속성 목록이 코드에 정의된다
-  - [ ] 빌드/테스트 단계에서 속성명+값 스냅샷과 비교하여 변경을 감지한다
-  - [ ] 테스트 실패 시 "어느 속성이 변경되었는지" 명확하게 보고된다
-  - [ ] keep(style.css 7개소), gym(style.css 8개소) 모두 대상으로 포함한다
-- **관련 코드:** ** ** ** ** ** ** ** ** ** ** **- keep `style.css` — .editor-content-wrap (min-height), .ed-topbar (position), safe-area-inset-bottom 관련 padding-bottom 전체- gym `style.css` — .screens-container (padding-bottom), .workout-header (padding-top), .workout-content (padding-top), .rest-timer-bar (bottom), .stats-header/stats-scroll-area (padding), .settings-header/settings-content (padding)- `common-rules.md` — 변경 금지 CSS 속성 섹션
-- **선행 조건:** ** ** ** ** ** ** ** ** ** ** ** keep-57 완료
-- **현재:** ** ** ** ** ** ** ** ** ** ** ** 미착수. 방식 검토 필요 — ① CSS 파싱(정규식 또는 경량 파서) ② 속성명+값 스냅샷 저장 ③ 테스트 시 비교 ④ 실패 메시지 포맷
-- **커밋 태그:** ** ** ** ** ** ** ** ** ** ** ** all-72
 
 ## 🟡 대기
 | ID | 등록일 | 프로젝트 | 작업 | 종류 | 메모 |
