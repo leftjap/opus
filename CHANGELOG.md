@@ -1,6 +1,8 @@
 ## 2026-04-02
 
 ### Changed
+- POLT ① Dry Run에 테스트 생성 시 실제 출력 기반 expected 설정 규칙 추가 — AI가 expected를 추측하지 않도록 강제. (common-rules.md)
+- CLAUDE.md "반복 실패 방지" 제거, "테스트 실행 규칙" 신설 — 반복 실패 방지는 Opus 측 규칙으로 이관 예정, 테스트 루프 방지는 Haiku 세션 내 감지 가능. (CLAUDE.md)
 - D-check 출력 규칙: 적용 대상이면 항상 `▷ [변환된 질문]` 출력 필수로 변경. 편향 미감지 시에도 "— 전제 타당" 표기. 근거: 비가시 지시의 실행 보장 불가(Chen 2026, Baker 2025), Dubois(2026) 리프레이밍 효과는 변환 결과가 출력에 존재해야 발생. (opus.md)
 - ALT 점검 항목 문구: "출력하지 않음" → "상세 과정은 생략"으로 교체. "출력하지 않음"이 실행 스킵 신호로 작용하는 문제 방지. (opus.md)
 - POLT ② Self-Critique에 "AGENTS.md 체크리스트 대조" 추가 — 5개 프로젝트(gym, study, keep, Finder, backlog)의 작업 전 체크리스트를 POLT 출력 경로에 편입. (common-rules.md)
