@@ -6,6 +6,15 @@
 
 ---
 
+## ⚡ 응답 전 체크 (매 응답 스캔)
+
+| 트리거 | 프로토콜 | 섹션 |
+|---|---|---|
+| 해석·평가·추천·비교·원인 분석 출력 | 검색/크롤링 먼저 → 근거 라벨 → 판단 | 근거 확보 |
+| 사용자 단정형 제안 / 암묵적 전제 | 질문 변환 → 편향 점검 → `▷` 표기 | D-check |
+| 3건+ 분류 / 아키텍처·스키마 설계 / 문서 3행+ 변경 | A-1~A-4 점검 → `✅`/`⚠️ ALT` 표기 | ALT |
+| 작업지시서 출력 | 교훈(섹션 3) + 보호 코드(섹션 2-1) 스캔 | 감지 규칙 |
+
 ## 0-1. 작업환경
 
 | 구성 요소 | 상세 |
@@ -116,6 +125,8 @@ opus.md 갱신 Step 실행 시 줄 수를 확인한다. 200줄 초과 시 아카
 | keep | `C:\dev\apps\keep\` | `leftjap/keep` | 루트 | 운영 중 |
 | Finder | `C:\dev\apps\finder\` | `leftjap/Finder` | 루트 | 운영 중 |
 | Backlog | `C:\dev\apps\backlog\` | `leftjap/backlog` | 루트 | 운영 중 |
+| my_codex | `C:\dev\docs\my_codex.md` | `leftjap/docs` | — | 운영 중 |
+| indi_story | `C:\dev\docs\indi_story.md` | `leftjap/docs` | — | 운영 중 |
 
 ---
 
